@@ -36,6 +36,8 @@ while True:
         
             if valor > saldo:
                 print("saldo insuficiente para saque")
+            elif valor <= 0:
+                print("saldo inválido para saque")
             elif valor > limite:
                 print("saque disponível apenas para valores até R$500,00")
             else:
