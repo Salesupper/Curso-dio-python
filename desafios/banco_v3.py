@@ -114,17 +114,19 @@ class Conta:
 
     def sacar(self,valor):
         saldo = self.saldo
-        excedeu_saldo = valor > saldo
-
-        if excedeu_saldo:
-            print("\n@@@ Operação falhou! Você não tem saldo suficiente. @@@")
-
-        elif valor > 0:
+        
+        if valor > saldo:
+            print("saldo insuficiente para saque")
+        elif valor <= 0:
+            print("saldo inválido para saque")
+        elif valor > limite:
+            print("saque disponível apenas para valores até R$500,00")
+        else:
             self._saldo -= valor
             print("\n=== Saque realizado com sucesso! ===")
             return True
         
-        else:
+        if not self._saldo:
             print("\n@@@ Operação falhou! O valor informado é inválido. @@@")
 
         return False
@@ -134,7 +136,7 @@ class Conta:
             self._saldo += valor
             print("\n=== Depósito realizado com sucesso! ===")
         else:
-            print("\n@@@ Operação falhou! O valor informado é inválido. @@@")
+            print("deposito inválido tente novamente")
             return False
 
         return True
